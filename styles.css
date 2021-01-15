@@ -1,0 +1,134 @@
+body {
+  background-color: #8395a7;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+.reloj {
+  position: absolute;
+  /*Una sola imagen, centrada y escalada al 88%*/
+  background: no-repeat center/88%
+    url("https://cssanimation.rocks/images/posts/clocks/ios_clock.svg");
+
+  background-color: white;
+  border: 20px solid #5f27cd;
+  height: 20em;
+  width: 20em;
+  border-radius: 50%;
+
+  /*Centrar el div vertical y horizontalmente*/
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+/*Punto central del reloj - Pseudoelemento after*/
+.reloj::after {
+  position: absolute;
+  background: #000;
+  border-radius: 50%;
+
+  /*Generar el contenido del pseudoelemento*/
+  content: "";
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5%;
+  height: 5%;
+
+  /*Para superponer el punto*/
+  z-index: 10;
+}
+
+
+/*Agregar los contenedores principales*/
+.cont-hora,
+.cont-minuto,
+.cont-segundo {
+  position: absolute;
+
+  /*Expandir los contenedores a pantalla completa 100% ancho x 100% de alto*/
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+.manesilla-hora {
+  background: black;
+  height: 25%;
+  width: 2.5%;
+  left: 48.75%;
+  top: 30%;
+
+  /*Propiedad para permitir que el div rote*/
+  transform-origin: left;
+  position: absolute;
+}
+
+
+.manesilla-minuto {
+  background: #000;
+  height: 40%;
+  left: 49%;
+  position: absolute;
+  top: 10%;
+  transform-origin: left;
+  width: 2%;
+}
+
+
+.manesilla-segundo {
+  background: #000;
+  height: 45%;
+  left: 49.5%;
+  position: absolute;
+  top: 14%;
+  transform-origin: left;
+  width: 1%;
+
+  /*Superponer la manesilla  sobre los otros elementos*/
+  z-index: 8;
+}
+
+
+/*Keyframes para que las manesillas se muevan 360º*/
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+
+
+ /*Uso del keyframes en la propiedad animation*/  
+.cont-hora {
+  /*La manecilla de las horas está configurada para girar una vez cada 12 horas (43.200 segundos)*/ 
+  animation: rotate 43200s infinite linear;
+}
+
+/*El minutero gira una vez por hora */
+.cont-minuto {
+  /*Valor linear: la animación tiene la misma velocidad de principio a fin*/  
+  animation: rotate 3600s infinite linear;
+}
+
+/*El segundero gira una vez por minuto*/
+.cont-segundo {
+  animation: rotate 60s infinite linear;
+}
+
+/*Minutero y segundero se mueven en  60 pasos*/
+.cont-segundo {
+    animation: rotate 60s infinite steps(60);
+  }
+  
+  .cont-minuto {
+    animation: rotate 3600s infinite steps(60);
+  }
+  
