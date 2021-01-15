@@ -1,10 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #8395a7;
 }
 
 h1 {
   text-align: center;
-  color: white;
+  color: #5f27cd;
 }
 
 .reloj {
@@ -15,14 +20,17 @@ h1 {
 
   background-color: white;
   border: 20px solid #5f27cd;
-  height: 20em;
-  width: 20em;
+  height: 30em;
+  width: 30em;
   border-radius: 50%;
 
   /*Centrar el div vertical y horizontalmente*/
   top: 0;
   left: 50%;
   transform: translate(-50%, 50%);
+  
+  /*Vertical*/
+  margin: -15%  0 0 0;
 }
 
 /*Punto central del reloj - Pseudoelemento after*/
